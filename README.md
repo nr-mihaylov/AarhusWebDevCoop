@@ -1,4 +1,4 @@
-# Mandatory Assignment 1: Umbraco.
+# Mandatory Assignment: Umbraco
 Group sizes: Individual or groups of max 2.
 
 
