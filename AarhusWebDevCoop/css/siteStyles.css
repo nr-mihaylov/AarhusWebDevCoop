@@ -1,0 +1,73 @@
+main {
+	margin: 100px 0;	
+}
+
+.member-greeting { 
+	padding: 15px;
+	color: #777;
+}
+.logout-btn {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	padding: 15px 15px 0 15px;
+	font-weight: 700;
+}
+
+.page-header {
+	margin-bottom: 50px;
+	padding: 0 20px;
+	border: none;
+}
+
+.page-title {
+	text-align: center;	
+}
+
+.page-subtitle {
+	text-align: center;
+}
+
+.list-reset {
+	padding: 0;
+	list-style: none;
+}
+
+.page-section {
+	margin-bottom: 50px;
+}
+
+.page-section > header {
+	padding: 0 20px;	
+}
+
+.project {
+	padding: 20px;
+}
+
+.project-header {
+	margin-bottom: 50px;
+}
+
+.article {
+	padding: 20px;
+}
+
+.article-header {
+	margin-bottom: 50px;
+}
+
+textarea {
+	width: 100%;
+	min-height: 300px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.member-photo {
+	max-width: 32px;
+}
+
+.member-login {
+	padding-left: 40px;	
+}

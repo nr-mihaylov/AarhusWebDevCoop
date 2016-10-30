@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ProjectsMain>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+
+
+@{
+	Layout = "Master.cshtml";
+}
+
+<div class="container">
+	<div class="row">
+		<header class="page-header">
+			<h1 class="page-title">@Umbraco.Field("title")</h1>
+		</header>
+	</div>
+	<div class="row">
+			@Html.Partial("_ProjectList")
+	</div>
+</div>

@@ -1,0 +1,24 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+	
+@{
+	var projectSection = Umbraco.Content(1100);
+}
+	
+<div class="container">
+	<div class="row">	
+		@foreach(var project in projectSection.Children().OrderBy("CreateDate desc").Take(3)) {
+			<div class="col-sm-12 col-md-6 col-lg-4">
+				<article>
+					<header>
+						<h3>@project.title</h3>
+						<p><strong>Date:</strong> @project.CreateDate</p>
+						<p><strong>Author:</strong> @project.projectLeader</p>
+						<p><strong>Status:</strong> @Umbraco.GetPreValueAsString(project.Status)</p>
+					</header>
+					<p>@project.description</p>
+					<a href="@project.Url" class="btn btn-primary">Read More</a>
+				</article>
+			</div>
+		}
+	</div>
+</div>

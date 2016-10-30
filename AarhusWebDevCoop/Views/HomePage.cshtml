@@ -1,0 +1,31 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "Master.cshtml";
+}
+
+	<div class="container">
+		<div class="row">
+			<header class="page-header">
+				<h1 class="page-title">@Umbraco.Field("headline")</h1>
+				<p class="page-subtitle">@Umbraco.Field("content")</p>
+			</header>
+		</div>
+		<div class="row">
+			<section class="page-section">
+				<header>
+					<h2>Recent Articles</h2>
+					<hr/>
+				</header>
+				@Html.Partial("_ArticleListRecent")
+			</section>
+		</div>
+		<div class="row">
+			<section class="page-section">
+				<header>
+					<h2>Recent Projects</h2>
+					<hr/>
+				</header>
+				@Html.Partial("_ProjectListRecent")
+			</section>	
+		</div>
+	</div>

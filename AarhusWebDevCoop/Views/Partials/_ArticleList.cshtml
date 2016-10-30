@@ -1,0 +1,23 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+	var articleSection = Umbraco.Content(1099);
+}
+	
+<div class="container">
+	<div class="row">	
+		@foreach(var article in articleSection.Children().OrderBy("CreateDate desc")) {
+			<div class="col-sm-12 col-md-6 col-lg-4">
+				<article>
+					<header>
+						<h2>@article.headline</h2>
+						<p><strong>Date:</strong> @article.CreateDate</p>
+						<p><strong>Author:</strong> @article.author</p>
+					</header>
+					<p>@article.shortDescription</p>
+					<a href="@article.Url" class="btn btn-primary">Read More</a>
+				</article>
+			</div>
+		}
+	</div>
+</div>

@@ -1,0 +1,83 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.MemberList>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+
+@{
+	Layout = "Master.cshtml";
+}
+
+@{ 
+	var memberService = ApplicationContext.Current.Services.MemberService;
+	var members = memberService.GetMembersByGroup("Active");
+}
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Active members</div>
+				<table class="table">
+					<tr>
+						<th>Photo</th>
+						<th>Username</th> 
+						<th>Email</th>
+						<th>Mobile</th>
+					</tr>
+					@foreach(var member in members) {
+
+						string srcPath = "";
+						object json = member.GetValue("photo");
+
+						if(json != null) {
+
+							string fullPath = json.ToString();
+							string[] substrings = fullPath.Split(',');
+							string srcString = substrings[2];
+							string[] srcSubStrings = srcString.Split(':');
+							srcPath = srcSubStrings[1].Replace("\"", "");
+							srcPath = srcPath.Replace("}", "");	
+
+						}
+						
+						<tr>
+							<td><img class="member-photo" src="@srcPath" /></td>	
+							<td>@member.Name</td> 
+							<td>@member.Email</td>
+							<td>@member.GetValue("mobile")</td>
+						</tr>
+
+					}
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+					
+@{
+	members = memberService.GetMembersByGroup("Prospect");
+}
+					
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Prospect members</div>
+				<table class="table">
+					<tr>
+						<th>Username</th> 
+						<th>Email</th>
+						<th>Mobile</th>
+					</tr>
+					@foreach(var member in members) {
+						
+						<tr>	
+							<td>@member.Name</td> 
+							<td>@member.Email</td>
+							<td>@member.GetValue("mobile")</td>
+						</tr>
+
+					}
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

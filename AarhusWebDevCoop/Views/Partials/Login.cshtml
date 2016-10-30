@@ -1,0 +1,42 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+
+@using System.Web.Mvc.Html
+@using ClientDependency.Core.Mvc
+@using Umbraco.Web
+@using Umbraco.Web.Models
+@using Umbraco.Web.Controllers
+
+@{
+    var loginModel = new LoginModel();
+    
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    Html.RequiresJs("/umbraco_client/ui/jquery.js");
+    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.min.js");
+    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.unobtrusive.min.js");
+}
+
+@Html.RenderJsHere()
+
+@using (Html.BeginUmbracoForm<UmbLoginController>("HandleLogin"))
+{
+    <div class="form-horizontal member-login">
+        @Html.ValidationSummary("loginModel", true)
+
+        <div class="form-group">
+            @Html.LabelFor(m => loginModel.Username, htmlAttributes: new { @class = "control-label" })
+            @Html.TextBoxFor(m => loginModel.Username, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(m => loginModel.Username, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => loginModel.Password, htmlAttributes: new { @class = "control-label" })
+            @Html.PasswordFor(m => loginModel.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(m => loginModel.Password, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Login" class="btn btn-primary" />
+        </div>
+    </div>
+}

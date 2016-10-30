@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+	
+@{
+
+	var messageList = Umbraco.Content(1147);
+	
+	foreach(var msg in messageList.Children().OrderBy("CreateDate desc")) {
+		
+		<p><strong>[@msg.CreateDate] @msg.sender: </strong>@msg.message</p>
+			
+	}
+	
+}

@@ -1,0 +1,38 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+	
+@{
+	var root = CurrentPage.AncestorOrSelf(1);
+}
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#website-navbar-collapse" aria-expanded="false">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </button>
+	  <a class="navbar-brand" href="@root.Url">AWD Network</a>
+	</div>
+		  
+	<div class="collapse navbar-collapse" id="website-navbar-collapse">
+	  <ul class="nav navbar-nav">
+		<li><a href="@root.Url">@root.Name</a></li>
+		@foreach(var page in root.Children.Where("Visible")) { 
+			<li><a href="@page.Url">@page.Name</a></li>
+		}
+		<li class="dropdown">
+		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project Details<span class="caret"></span></a>
+		  <ul class="dropdown-menu">
+			@foreach(var project in @Umbraco.Content(1100).Children.Where("Status.Contains(\"23\")")) { 
+				<li><a href="@project.Url">@project.Name</a></li>
+			}
+		  </ul>
+		</li>
+		@Html.Partial("Logout")
+	  </ul>
+	</div>
+  </div>
+</nav>

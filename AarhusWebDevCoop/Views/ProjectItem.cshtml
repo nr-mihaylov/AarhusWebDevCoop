@@ -1,0 +1,21 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ProjectItem>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Master.cshtml";
+}
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<article class="project">
+				<header class="project-header">
+					<h1>@CurrentPage.title</h1>
+					<p><strong>Date:</strong> @CurrentPage.CreateDate</p>
+					<p><strong>Project Leader:</strong> @CurrentPage.projectLeader</p>
+					<p><strong>Project Status:</strong> @Umbraco.GetPreValueAsString(CurrentPage.status)</p>
+				</header>
+				<p class="project-content">@CurrentPage.content</p>
+				<a class="btn btn-default" href="@CurrentPage.Up().Url">Back to project list</a>
+			</article>
+		</div>
+	</div>
+</div>
